@@ -1,0 +1,3 @@
+0 Skin Allergy
+1 Normal
+2 Acne
