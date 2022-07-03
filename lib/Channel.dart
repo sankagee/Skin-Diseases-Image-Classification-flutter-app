@@ -142,10 +142,10 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     color: user.isFollowedByMe ? Colors.redAccent : Color(0xfffff),
                     borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: user.isFollowedByMe ? Colors.transparent : Colors.grey.shade700,)
+                    border: Border.all(color: user.isFollowedByMe ? Colors.transparent : Colors.black45,)
                 ),
                 child: Center(
-                    child: Text(user.isFollowedByMe ? 'Channeled' : 'Channel', style: TextStyle(color: user.isFollowedByMe ? Colors.white : Colors.black54))
+                    child: Text(user.isFollowedByMe ? 'Channeled' : 'Channel Info', style: TextStyle(color: user.isFollowedByMe ? Colors.white : Colors.black54))
                 )
             ),
           )
