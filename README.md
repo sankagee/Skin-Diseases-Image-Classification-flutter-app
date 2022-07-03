@@ -85,7 +85,8 @@ disease
 
 ## Project Development Screen Shots
 <b>Home <br>
-<b>Home - image Add to Gallery And Analysis Result<br>
-<b>Home - image add to Camera and Analysis Result <br>
-<b>Feed -explain in Another Skin Diseases <br>
-<b>Channel - You can Channel in Srilanka Specialist of the Dermatologist. <br>
+![Screenshot_20220703-231643](https://user-images.githubusercontent.com/49139755/177053087-6894f230-4989-4490-a507-a8c0b5851b62.jpg)
+<br><b>Home - image Add to Gallery And Analysis Result<br>
+<br><b>Home - image add to Camera and Analysis Result <br>
+<br><b>Feed -explain in Another Skin Diseases <br>
+<br><b>Channel - You can Channel in Srilanka Specialist of the Dermatologist. <br>
