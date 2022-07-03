@@ -25,17 +25,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   List<User> _users = [
-    User('DR(MRS) P. SENAKA', '@Hambantota', 'https://www.slcd.lk/wp-content/uploads/2021/07/Dr-Indira-Kahawita.png', false),
+    User('DR(MRS) P. SENAKA', '@Hambantota', 'https://i1.rgstatic.net/ii/profile.image/751258864480260-1556125479393_Q512/Indira-Kahawita.jpg', false),
     User('DR'
         ' S. ABEYKEERTHI', '@Anuradhapura', 'https://groundviews.org/wp-content/uploads/2012/08/Screen-Shot-2012-08-27-at-11.37.32-PM.jpg', false),
     User('DR V.G ABEYVIKRAMA', '@Colombo', 'https://www.nhk.health.gov.lk/images/mahendra/consultants/w_abeykoon.jpg', false),
     User('DR UWAYSE AHAMED', '@Colombo', 'https://www.happysrilankans.com/wp-content/uploads/2020/11/Dr.-Uvais-Ahamed.jpg', false),
     User('DR JANAKA AKARAWITA', '@Colombo', 'https://s3-us-west-1.amazonaws.com/co-directory-images/janaka-akarawita-6bb12843.jpg', false),
-    User('DR P. AKURUGODA', '@Galle', 'https://adm.ruh.ac.lk/supplies/images/tlpteam/m_Mr-D-N--Akurugoda-Management-Assistant-1593401519.jpg', false),
-    User('DR D.M AMARATHUNGA', '@Matara', 'https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-6/253233867_186972010276038_7076400210082391518_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHDkzfqspX76CHZmAw4jIGDZ1kLOSUTfvBnWQs5JRN-8PY6h7pebrqCHi044Aw7DI_dHMwiTOv6ZsgW_dDQGbhO&_nc_ohc=3RZilxZ2qaUAX9PNeRg&tn=rfVJ805nMwQziM9U&_nc_ht=scontent.fcmb1-2.fna&oh=00_AT_pB6EYQoKLEmTQRkfHHMt-jwRMReYSu_SZUkgEOz3fOA&oe=61C3415A', false),
+    User('DR P. AKURUGODA', '@Galle', 'https://ochrehealth.com.au/wp-content/uploads/2020/08/Dr-Chameera-Akurugoda-400x400.jpeg', false),
+    User('DR D.M AMARATHUNGA', '@Matara', 'https://docplayer.net/docs-images/90/101512065/images/5-4.jpg', false),
     User('DR D. ARIYAWANSA', '@Ambalantota', 'https://i.ytimg.com/vi/IZYZJfqdvq8/maxresdefault.jpg', false),
     User('DR G. ARSECULERATNE', '@Gampaha', 'https://bmkltsly13vb.compat.objectstorage.ap-mumbai-1.oraclecloud.com/cdn.ft.lk/assets/uploads/image_dcdad01ce0.jpg', false),
-    User('DR D. BANDARA', '@Mathale', 'https://images.unsplash.com/photo-1541710430735-5fca14c95b00?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ', false),
+    User('DR D. BANDARA', '@Mathale', 'https://umanitoba.ca/agricultural-food-sciences/sites/agricultural-food-sciences/files/styles/3x2_900w/public/2021-02/fhns-nandika-bandara.jpg', false),
     User('DR MAHINDA DE SILVA', '@Gampaha', 'https://images.unsplash.com/photo-1541710430735-5fca14c95b00?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ', false),
     User('DR UPENDRA DE SILVA', '@Gampaha', 'https://images.unsplash.com/photo-1542534759-05f6c34a9e63?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ', false),
     User('DR MANEL DISSANAYAKE', '@Nugegoda', 'https://images.unsplash.com/photo-1516239482977-b550ba7253f2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ', false),
