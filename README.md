@@ -87,6 +87,7 @@ disease
 <b>Home <br>
 ![Screenshot_20220703-231643](https://user-images.githubusercontent.com/49139755/177053087-6894f230-4989-4490-a507-a8c0b5851b62.jpg)
 <br><b>Home - image Add to Gallery And Analysis Result<br>
+![Screenshot 02](https://user-images.githubusercontent.com/49139755/177053236-3374ee7b-cd3f-4fa6-bc07-d1241b293df9.jpg)
 <br><b>Home - image add to Camera and Analysis Result <br>
 <br><b>Feed -explain in Another Skin Diseases <br>
 <br><b>Channel - You can Channel in Srilanka Specialist of the Dermatologist. <br>
