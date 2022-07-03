@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
         child: _foundedUsers.length > 0 ? ListView.builder(
             itemCount: _foundedUsers.length,
             itemBuilder: (context, index) {
-                return userComponent(user: _foundedUsers[index]);
+              return userComponent(user: _foundedUsers[index]);
             }) : Center(child: Text("No users found", style: TextStyle(color: Colors.black),)),
       ),
     );
