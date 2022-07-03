@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
@@ -12,121 +11,138 @@ class Home extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0xffe6020a),
+        //primaryColor: Color(0xffe6020a),
         //primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyPage(),
+      home: TfliteModel(),
     );
   }
 }
-class MyPage extends StatefulWidget {
+
+class TfliteModel extends StatefulWidget {
+  const TfliteModel({Key? key}) : super(key: key);
+
   @override
-  _MyPageState createState() => _MyPageState();
+  _TfliteModelState createState() => _TfliteModelState();
 }
 
-class _MyPageState extends State<MyPage> {
-  late bool _loading;
+class _TfliteModelState extends State<TfliteModel> {
   late File _image;
-  late List _outputs;
-  final _imagePicker = ImagePicker();
-
+  late List _results;
+  bool imageSelect = false;
+  @override
   void initState() {
     super.initState();
-    _loading= true;
-
-    loadModel().then((value){
-      setState((){
-        _loading=false;
-      });
-    });
+    loadModel();
   }
 
-  loadModel() async {
-    await Tflite.loadModel(
-        model: "assets/model_unquant.tflite",
-        labels: "assets/labels.txt"
-    );
+  Future loadModel() async {
+    Tflite.close();
+    String res;
+    res = (await Tflite.loadModel(
+        model: "assets/model_unquant.tflite", labels: "assets/labels.txt"))!;
+    print("Models loading status: $res");
   }
 
-  pickImage() async{
-    var image= await _imagePicker.getImage(source: ImageSource.camera);
-    if(image == null)
-      return null;
-    setState(() {
-      _loading=true;
-      _image = File(image.path);
-    });
-    classifyImage(_image);
-  }
-
-  classifyImage(File image) async{
-    var output =await Tflite.runModelOnImage(
+  Future imageClassification(File image) async {
+    final List? recognitions = await Tflite.runModelOnImage(
       path: image.path,
-      numResults: 2,
-      threshold: 0.5,
+      numResults: 6,
+      threshold: 0.05,
       imageMean: 127.5,
       imageStd: 127.5,
     );
     setState(() {
-      _loading= false;
-      _outputs != output;
+      _results = recognitions!;
+      _image = image;
+      imageSelect = true;
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white60,
-      appBar: AppBar(
-        title: Text('Skin Diseases Finder'),
-      ),
-      body: _loading?
-      Container(
-        alignment: Alignment.center,
-        child: CircularProgressIndicator(),
-      )
-          : Container(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-
+        body: ListView(
           children: [
-            _image == null
+            (imageSelect)
                 ? Container(
-
+              margin: const EdgeInsets.only(top: 100),
+              child: Image.file(_image),
+              height: 400,
+              width: MediaQuery.of(context).size.width - 200,
             )
                 : Container(
-              child: Image.file(_image),
-              height: 500,
-              width: MediaQuery.of(context).size.width-200,
+              margin: const EdgeInsets.only(top: 330),
+              child: const Opacity(
+                opacity: 0.9,
+                child: Center(
+                  child: Text(
+                    "No image selected",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            _outputs != null
-                ?  Text(
-              "${_outputs[0]["label"]}".replaceAll(RegExp(r'[0-9]'), ''),
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  background: Paint()..color = Colors.white,
-                  fontWeight: FontWeight.bold
+            SingleChildScrollView(
+              child: Column(
+                children: (imageSelect)
+                    ? _results.map((result) {
+                  return Card(
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "${result['label']} - ${result['confidence'].toStringAsFixed(2)}",
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  );
+                }).toList()
+                    : [],
               ),
             )
-                : Text("Classification Waiting")
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: pickImage,
-        backgroundColor: Color(0xffe6020a),
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: pickImage2,
+              tooltip: "Pick Image",
+              backgroundColor: Colors.redAccent,
+              child: const Icon(Icons.image),
+            ),
+            SizedBox(
+              width: 15.0,
+            ),
+            FloatingActionButton(
+              onPressed: pickImage,
+              tooltip: "Pick Image",
+              backgroundColor: Colors.redAccent,
+              child: const Icon(Icons.camera),
+            ),
+          ],
+        ));
+  }
+
+  Future pickImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? pickedFile = await _picker.pickImage(
+      source: ImageSource.camera,
     );
+    File image = File(pickedFile!.path);
+    imageClassification(image);
+  }
+
+  Future pickImage2() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? pickedFile = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    File image = File(pickedFile!.path);
+    imageClassification(image);
   }
 }
