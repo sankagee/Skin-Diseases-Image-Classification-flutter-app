@@ -1,4 +1,8 @@
-# <b>Skin Diseases Finder</b>
+# <b>Detection of Skin Diseases using Digital Image Processing and SVM Algorithm</b>
+## Technologies
+<b>--That Have Two Part--<br>
+<br> <b>01. Image classification Model - It Makes Using Python with Tensorflow 
+<br> <b>02. Mobile Application - Flutter
 
 ## <b>Introduction</b>
 Sri Lanka holds a unique position in South Asia as one of the least developed nations 
