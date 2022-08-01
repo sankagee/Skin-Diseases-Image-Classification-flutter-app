@@ -63,7 +63,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/labels.txt
-    - assets/model_unquant.tflite
+    - assets/model.tflite
     - assets/new/im1.jpg
     - assets/new/im2.jpg
     - assets/new/im3.jpg

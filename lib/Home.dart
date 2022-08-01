@@ -41,7 +41,7 @@ class _TfliteModelState extends State<TfliteModel> {
     Tflite.close();
     String res;
     res = (await Tflite.loadModel(
-        model: "assets/model_unquant.tflite", labels: "assets/labels.txt"))!;
+        model: "assets/model.tflite", labels: "assets/labels.txt"))!;
     print("Models loading status: $res");
   }
 
@@ -67,40 +67,40 @@ class _TfliteModelState extends State<TfliteModel> {
           children: [
             (imageSelect)
                 ? Container(
-              margin: const EdgeInsets.only(top: 100),
-              child: Image.file(_image),
-              height: 400,
-              width: MediaQuery.of(context).size.width - 200,
-            )
+                    margin: const EdgeInsets.only(top: 100),
+                    child: Image.file(_image),
+                    height: 400,
+                    width: MediaQuery.of(context).size.width - 200,
+                  )
                 : Container(
-              margin: const EdgeInsets.only(top: 330),
-              child: const Opacity(
-                opacity: 0.9,
-                child: Center(
-                  child: Text(
-                    "No image selected",
-                    style: TextStyle(fontSize: 18),
+                    margin: const EdgeInsets.only(top: 330),
+                    child: const Opacity(
+                      opacity: 0.9,
+                      child: Center(
+                        child: Text(
+                          "No image selected",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
             SingleChildScrollView(
               child: Column(
                 children: (imageSelect)
                     ? _results.map((result) {
-                  return Card(
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        "${result['label']} - ${result['confidence'].toStringAsFixed(2)}",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  );
-                }).toList()
+                        return Card(
+                          child: Container(
+                            margin: EdgeInsets.all(10),
+                            child: Text(
+                              "${result['label']} - ${result['confidence'].toStringAsFixed(2)}",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        );
+                      }).toList()
                     : [],
               ),
             )
